@@ -1,0 +1,26 @@
+###
+GET http://localhost:3001/api HTTP/1.1
+
+
+###
+POST http://localhost:3001/api HTTP/1.1
+Content-Type: application/json; charset=UTF-8
+
+{
+  "title": "Gone with the Wind",
+  "author": "Margaret Mitchell",
+  "edition": 6
+}
+
+###
+DELETE http://localhost:3001/api/7 HTTP/1.1
+
+###
+PUT http://localhost:3001/api/2 HTTP/1.1
+Content-Type: application/json; charset=UTF-8
+
+{
+  "title": "The Chronicles of Narnia Part II",
+  "author": "C.S. Lewis",
+  "edition": 8
+}
