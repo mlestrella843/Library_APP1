@@ -3,12 +3,13 @@ const mysql = require('mysql2');
 const myconn = require('express-myconnection');
 
 const routes = require('./routes');
-
 const app = express();
+
+//* for parsing application/json
 app.use(express.json()); 
 
-// for parsing application/json
-//Set Port to 3001
+
+//*Set Port to 3001
 app.set( 'port', process.env.PORT || 3001 );
 
 const dbOptions = {
@@ -21,7 +22,7 @@ const dbOptions = {
 
 //* Middlewares
 app.use(myconn(mysql, dbOptions, 'single'));
-//Listen the server on port 3001
+
 
 //*First route-endpoint
 app.get('/', (req, res) => {
@@ -32,6 +33,7 @@ app.use('/api', routes);
 
 
 //* Server running
+//*Listen the server on port 3001
 app.listen(app.get('port'), () => {
     console.log('Server running on port ', app.get('port'));
 })

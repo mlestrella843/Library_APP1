@@ -12,8 +12,7 @@ routes.get('/', (req,res) => {
 
             res.json(rows)
         })
-    })
-    
+    })   
 });
 
 //* Create a Book
@@ -27,8 +26,7 @@ routes.post('/', (req,res) => {
 
             res.send('book was inserted');
         })
-    })
-    
+    }) 
 });
 
 //* Delete a Book
