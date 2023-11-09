@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const myconn = require('express-myconnection');
+const cors = require('cors');
 
 const routes = require('./routes');
 const app = express();
@@ -8,9 +9,14 @@ const app = express();
 //* for parsing application/json
 app.use(express.json()); 
 
+app.use(cors({
+    origin: 'http://localhost:3000', // Cambia esto con el dominio permitido
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  }));
 
-//*Set Port to 3001
-app.set( 'port', process.env.PORT || 3001 );
+//*Set Port to 9000
+app.set( 'port', process.env.PORT || 9000 );
 
 const dbOptions = {
     host:     'localhost',
