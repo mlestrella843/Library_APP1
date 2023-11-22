@@ -35,10 +35,7 @@ app.get('/', (req, res) => {
     res.send( "Welcome to my LIbrary App!!!!!!" );
 });
 
-app.get('/api', (req, res) => {
-    res.send("Testing API!!!!!!");
-});
-
+app.use('/api',routes);
 
 //* Server running
 //*Listen the server on port 9000
