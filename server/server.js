@@ -9,11 +9,11 @@ const app = express();
 //* for parsing application/json
 app.use(express.json()); 
 
-app.use(cors({
-    origin: 'http://localhost:3000', // Cambia esto con el dominio permitido
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-  }));
+// app.use(cors({
+//     origin: 'http://localhost:3000', // Cambia esto con el dominio permitido
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true,
+//   }));
 
 //*Set Port to 9000
 app.set( 'port', process.env.PORT || 9000 );
@@ -32,14 +32,16 @@ app.use(myconn(mysql, dbOptions, 'single'));
 
 //*First route-endpoint
 app.get('/', (req, res) => {
-    res.send( "Welcome to my API LIbrary!!!!!!" );
+    res.send( "Welcome to my LIbrary App!!!!!!" );
 });
 
-app.use('/api', routes);
+app.get('/api', (req, res) => {
+    res.send("Testing API!!!!!!");
+});
 
 
 //* Server running
-//*Listen the server on port 3001
+//*Listen the server on port 9000
 app.listen(app.get('port'), () => {
     console.log('Server running on port ', app.get('port'));
 })
