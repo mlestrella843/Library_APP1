@@ -7,7 +7,7 @@ POST http://localhost:9000/api HTTP/1.1
 Content-Type: application/json; charset=UTF-8
 
 {
-  "title": "Alice in The Wonder Land",
+  "title": "Alice in The Wonder Land to Delete",
   "author": "Lewis Carrol",
   "edition": 5
 }
@@ -16,11 +16,11 @@ Content-Type: application/json; charset=UTF-8
 DELETE http://localhost:9000/api/7 HTTP/1.1
 
 ###
-PUT http://localhost:9000/api/2 HTTP/1.1
+PUT http://localhost:9000/api/4 HTTP/1.1
 Content-Type: application/json; charset=UTF-8
 
 {
-  "title": "The Chronicles of Narnia Part II",
-  "author": "C.S. Lewis",
-  "edition": 8
+    "title": "The Lord Of The Rings II",
+    "author": "J.R.R. Tolkien",
+    "edition": 3
 }
