@@ -79,7 +79,7 @@
 // export default BookList;
 import React from 'react';
 
-const BookList = () => {
+const BookList = ({books}) => {
     return (
         <table className="table">
             <thead>
@@ -90,13 +90,22 @@ const BookList = () => {
                     <th>Edition</th>
                 </tr>
             </thead>
-            <tbody>      
-                <tr>                            
-                    <td>ID</td>
-                    <td>Title</td>
-                    <td>Author</td>
-                    <td>Edition</td>    
-                </tr>
+            <tbody>             
+                {books.map(book => (
+                <tr key={book.id}>
+                        <td>{book.id}</td>
+                        <td>{book.title}</td>
+                        <td>{book.author}</td>
+                        <td>{book.edition}</td>
+                        <td>
+                            {/* <div>
+                                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-10" onClick={() => handleDelete(book.id)}>Delete</button>
+                                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2" onClick={() => handleUpdate(book.id)}>Update</button>
+                            </div> */}
+                        </td>
+                    </tr>
+                )          
+                )}           
             </tbody>
         </table>
     );

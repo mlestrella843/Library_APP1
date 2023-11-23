@@ -67,7 +67,7 @@ function App() {
     const getBooks= () => {
       fetch('http://localhost:9000/api')
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(res => setBooks(res))
       .catch(error => console.error('Error fetching data:', error));
     }
     getBooks()
@@ -80,7 +80,7 @@ function App() {
           <div className="row">  
              <div className="col-7">
                  <h2 style={{textAlign: 'center'}}>Book List</h2>
-                 <BookList />
+                 <BookList books={books}/>
              </div>
              <div className="col-5">
                  <h2 style={{textAlign: 'center'}}>Book Form</h2>
