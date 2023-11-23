@@ -81,7 +81,7 @@ import React from 'react';
 
 const BookList = ({books}) => {
     return (
-        <table className="table">
+        <table className="table table-auto">
             <thead>
                 <tr>
                     <th>ID</th>
