@@ -58,9 +58,16 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import Navbar from './components/NavBar'
 import BookList from './components/BookList'
+import Form from './components/Form'
 
 function App() {
 
+  const [book, setBook] = useState( {
+          title: '',
+          author: '',
+          edition: 0
+      })
+      
   const [books, setBooks] = useState([])
 
   useEffect(() => {
@@ -84,6 +91,7 @@ function App() {
              </div>
              <div className="col-5">
                  <h2 style={{textAlign: 'center'}}>Book Form</h2>
+                 <Form />
              </div>    
           </div>  
       </div>   
