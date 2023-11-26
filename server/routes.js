@@ -2,16 +2,11 @@ const express = require('express');
 const routes = express.Router();
 
 
-// routes.get('/', (req, res) => {
-//     //res.send("Testing API!!!!!!");
-// });
 
 //* Login User
-routes.get('/login', (req,res) => {
-     res.send('Quiero loguearme');
-     console.log('Me estoy logueando');
+routes.get('/login', (req, res) => {
+    res.send( "Estas en el login" );
 });
-
 
 
 //* Get a book
