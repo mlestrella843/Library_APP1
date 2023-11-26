@@ -38,8 +38,6 @@ app.get('/', (req, res) => {
 });
 
 
-
-
 //* SERVER RUNNING
 //*Listen the server on port 9000
 app.listen(app.get('port'), () => {
