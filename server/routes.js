@@ -6,6 +6,13 @@ const routes = express.Router();
 //     //res.send("Testing API!!!!!!");
 // });
 
+//* Login User
+routes.get('/login', (req,res) => {
+     res.send('Quiero loguearme');
+     console.log('Me estoy logueando');
+});
+
+
 
 //* Get a book
 routes.get('/', (req,res) => {

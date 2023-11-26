@@ -2,6 +2,9 @@ const express = require('express');
 const mysql = require('mysql2');
 const myconn = require('express-myconnection');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config({ path:'./.env'});
 
 const routes = require('./routes');
 const app = express();
@@ -11,11 +14,11 @@ const app = express();
 app.set( 'port', process.env.PORT || 9000 );
 
 const dbOptions = {
-    host:     'localhost',
+    host: process.env.DATABASE_HOST,
     port: 3306,
-    user:     'root',
-    password: 'root_0843',
-    database: 'Library'
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE
 }
 
 //* Middlewares
@@ -35,6 +38,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api',routes);
+app.use('/api/login', routes);
 
 //* Server running
 //*Listen the server on port 9000
