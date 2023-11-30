@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
 
@@ -8,7 +9,9 @@ const Login = () => {
 
     function handleSubmit(event){
         event.preventDefault();
-
+        axios.post('http://localhost:9000/api/login', {email, password})
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
   return (
