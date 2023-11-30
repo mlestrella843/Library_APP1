@@ -28,15 +28,21 @@ app.use(cors({
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   }));
+
+//   const corsOptionsForLogin = {
+//     origin: 'http://localhost:3000',
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true,
+//   };
+//   app.use('/api/login', cors(corsOptionsForLogin));
+  
 //*for set the routes
 app.use('/api',routes);
-app.use('/api/login', routes);
 
 //*First route-endpoint
 app.get('/', (req, res) => {
     res.send( "Welcome to my LIbrary App!!!!!!" );
 });
-
 
 //* SERVER RUNNING
 //*Listen the server on port 9000

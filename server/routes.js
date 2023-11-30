@@ -8,6 +8,18 @@ routes.get('/login', (req, res) => {
     res.send( "Estas en el login" );
 });
 
+routes.post('/login', (req, res) => {
+    const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+    const values = [
+        req.body.email,
+        req.body.password
+    ]
+    dbOptions.query(sql, [values], (err,data) => {
+        if(err) return res.json("Login Fail");
+        return res.json(data);
+    });
+})
+
 
 //* Get a book
 routes.get('/', (req,res) => {
