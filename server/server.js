@@ -42,12 +42,13 @@ app.use(cors({
 app.use('/api',routes);
 
 const publicDirectory = path.join(__dirname, './public');
-
+app.use(express.static(publicDirectory));
 app.set('view engine', 'hbs');
 
 //*First route-endpoint
 app.get('/', (req, res) => {
-    res.send( "Welcome to my LIbrary App!!!!!!" );
+    // res.send( "Welcome to my LIbrary App!!!!!!" );
+    res.render("index");
 });
 
 //* SERVER RUNNING
