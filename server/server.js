@@ -50,6 +50,10 @@ app.get('/', (req, res) => {
     // res.send( "Welcome to my LIbrary App!!!!!!" );
     res.render("index");
 });
+app.get('/register', (req, res) => {
+    // res.send( "Welcome to my LIbrary App!!!!!!" );
+    res.render("register");
+});
 
 //* SERVER RUNNING
 //*Listen the server on port 9000
