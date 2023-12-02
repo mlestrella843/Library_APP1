@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 const routes = require('./routes');
 const app = express();
 
+const path = require('path');
+
 //*SET PORT to 9000
 app.set( 'port', process.env.PORT || 9000 );
 
@@ -38,6 +40,10 @@ app.use(cors({
   
 //*for set the routes
 app.use('/api',routes);
+
+const publicDirectory = path.join(__dirname, './public');
+
+app.set('view engine', 'hbs');
 
 //*First route-endpoint
 app.get('/', (req, res) => {
