@@ -11,7 +11,7 @@ const path = require('path');
 //*SET PORT to 9000
 app.set( 'port', process.env.PORT || 9000 );
 
-//*SET DATABASE AND .DOTENV VARIABLES
+//*SET DATABASE AND .DOTENV VARIABLES. MYSQL DATBASE, PORT BY DEFAULT 3306.
 dotenv.config({ path:'./.env'});
 const dbOptions = {
     host: process.env.DATABASE_HOST,
@@ -23,6 +23,7 @@ const dbOptions = {
 
 //* MIDLEWIRES
 app.use(myconn(mysql, dbOptions, 'single'));
+
 //* for parsing application/json
 app.use(express.json()); 
 app.use(cors({
@@ -39,14 +40,18 @@ app.use(cors({
 //   app.use('/api/login', cors(corsOptionsForLogin));
   
 //*for set the routes
+
+// app.use('/', routes);
+
 app.use('/api',routes);
 
+//* To Read the Public Directory and Views
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 app.set('view engine', 'hbs');
 
 //*First route-endpoint
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
     // res.send( "Welcome to my LIbrary App!!!!!!" );
     res.render("index");
 });
