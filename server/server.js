@@ -24,7 +24,9 @@ const dbOptions = {
 //* MIDLEWIRES
 app.use(myconn(mysql, dbOptions, 'single'));
 
-//* for parsing application/json
+//* Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({ extended:false }));
+//* Parse JSON bodies (as sent by API clients)
 app.use(express.json()); 
 app.use(cors({
     origin: 'http://localhost:3000', // Cambia esto con el dominio permitido
@@ -45,7 +47,6 @@ app.use(cors({
 app.use('/', require('./routes/pages'));
 app.use('/auth',require('./routes/auth'));
 app.use('/api',require('./api/crud'));
-
 
 //* To Read the Public Directory and Views
 const publicDirectory = path.join(__dirname, './public');
