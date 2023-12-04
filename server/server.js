@@ -43,7 +43,9 @@ app.use(cors({
 
 // app.use('/', routes);
 app.use('/', require('./routes/pages'));
+app.use('/auth',require('./routes/auth'));
 app.use('/api',require('./api/crud'));
+
 
 //* To Read the Public Directory and Views
 const publicDirectory = path.join(__dirname, './public');
