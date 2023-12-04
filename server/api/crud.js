@@ -1,8 +1,6 @@
 const express = require('express');
 const routes = express.Router();
 
-
-
 //* Login User
 // routes.get('/login', (req, res) => {
 //     res.send( "Estas en el login" );
@@ -19,7 +17,6 @@ const routes = express.Router();
 //         return res.json(data);
 //     });
 // })
-
 
 //* Get a book
 routes.get('/', (req,res) => {

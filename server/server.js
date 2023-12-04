@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const myconn = require('express-myconnection');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const routes = require('./routes');
+//const routes = require('./routes');
 const app = express();
 
 const path = require('path');
@@ -42,14 +42,13 @@ app.use(cors({
 //*for set the routes
 
 // app.use('/', routes);
-
-app.use('/api',routes);
+app.use('/', require('./routes/pages'));
+app.use('/api',require('./api/crud'));
 
 //* To Read the Public Directory and Views
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 app.set('view engine', 'hbs');
-
 
 //* SERVER RUNNING
 //*Listen the server on port 9000
