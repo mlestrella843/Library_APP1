@@ -50,15 +50,6 @@ const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 app.set('view engine', 'hbs');
 
-//*First route-endpoint
-app.get('/login', (req, res) => {
-    // res.send( "Welcome to my LIbrary App!!!!!!" );
-    res.render("index");
-});
-app.get('/register', (req, res) => {
-    // res.send( "Welcome to my LIbrary App!!!!!!" );
-    res.render("register");
-});
 
 //* SERVER RUNNING
 //*Listen the server on port 9000
