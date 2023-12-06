@@ -3,9 +3,7 @@ const mysql = require('mysql2');
 const myconn = require('express-myconnection');
 const cors = require('cors');
 const dotenv = require('dotenv');
-//const routes = require('./routes');
 const app = express();
-
 const path = require('path');
 
 //*SET PORT to 9000
@@ -23,7 +21,6 @@ const dbOptions = {
 
 //* MIDLEWIRES
 app.use(myconn(mysql, dbOptions, 'single'));
-
 //* Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended:false }));
 //* Parse JSON bodies (as sent by API clients)
@@ -42,16 +39,21 @@ app.use(cors({
 //   app.use('/api/login', cors(corsOptionsForLogin));
   
 //*for set the routes
-
 // app.use('/', routes);
 app.use('/', require('./routes/pages'));
 app.use('/auth',require('./routes/auth'));
 app.use('/api',require('./api/crud'));
 
+
 //* To Read the Public Directory and Views
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
+
+
+//* Configuración del motor de vistas (hbs en este caso)
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
 
 //* SERVER RUNNING
 //*Listen the server on port 9000
