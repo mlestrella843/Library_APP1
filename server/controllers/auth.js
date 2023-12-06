@@ -30,28 +30,42 @@ const dbOptions = mysql.createConnection({
 //app.use(myconn(mysql, dbOptions, 'single'));
 
 exports.register = (req,res) => {
+    
     console.log(req.body);
 
     const { name, email, password, pass_confirm } = req.body;
 
     dbOptions.query('SELECT email FROM users WHERE email = ?', [email], async (error, results) => {
-        if(error){
-            console.log(error)
+        if( error ){
+            console.log(error);
         }
-        if(results.lenght > 0 ){
+        // console.log("checks variable results", results);  
+        if(results.length > 0 ){
             return res.render('register', {
             message: 'That email is already in use'
             })
-        }else if( password!= pass_confirm){
+        }else if( password !== pass_confirm ){
             return res.render('register', {
             message: 'Password do not match'
             });
         }
-
         let hashedPassword = await bcrypt.hash( password, 8 );
         console.log(hashedPassword);
-    });
+        // res.send("Testing");
+        dbOptions.query('INSERT INTO users SET ? ', {
+            name:name,
+            email:email,
+            password:hashedPassword}, (error, results) => {
+                if(error){
+                    console.log(error);
+                }else{
+                    console.log(results);
+                    return res.render('register', {
+                    message: 'User registered'
+                    }); 
+                }
+            })
+        });
 
     // res.send("Form Submitted");
-
 }
